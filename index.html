@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Golden Times Educational Services — A1 Final Test</title>
+<style>
+:root{
+ --navy:#10233f;--navy2:#17345d;--blue:#2f6fed;--cyan:#18b6c9;--gold:#e8b84a;
+ --ink:#172033;--muted:#64748b;--line:#dbe3ee;--paper:#ffffff;--bg:#f4f7fb;
+ --ok:#087443;--danger:#c62828;--soft:#eef5ff;--soft2:#effbfc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:
+ radial-gradient(circle at 8% 0%,rgba(47,111,237,.10),transparent 28%),
+ radial-gradient(circle at 92% 8%,rgba(24,182,201,.09),transparent 25%),
+ var(--bg);color:var(--ink)}
+button,input,textarea{font:inherit}.hidden{display:none!important}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.90);border-bottom:1px solid rgba(219,227,238,.9);backdrop-filter:blur(18px)}
+.header-inner{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:900;letter-spacing:.1px;font-size:18px;color:var(--navy)}
+.brand small{display:block;font-weight:700;color:var(--muted);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;margin-top:3px}
+.timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:19px;padding:9px 14px;border-radius:13px;background:var(--navy);color:#fff;min-width:96px;text-align:center;box-shadow:0 8px 22px rgba(16,35,63,.18)}
+.timer.danger{background:var(--danger);animation:pulse 1.4s infinite}.timer.done{background:var(--ok)}
+@keyframes pulse{50%{transform:scale(1.035)}}
+main{max-width:1180px;margin:0 auto;padding:32px 22px 100px}
+.panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 50px rgba(16,35,63,.07);margin-bottom:20px}
+.start-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#10233f 0%,#17345d 55%,#1d5c86 100%);color:#fff;border:0}
+.start-hero:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-90px;top:-120px;background:rgba(24,182,201,.18)}
+.start-hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;left:-80px;bottom:-100px;background:rgba(232,184,74,.15)}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--cyan);display:inline-block}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.04;margin:18px 0 10px;letter-spacing:-1.5px}
+h2{margin:0 0 8px;font-size:25px;color:var(--navy)}h3{margin:0 0 8px;color:var(--navy)}
+.sub{color:var(--muted);line-height:1.6}
+.start-hero .sub{color:rgba(255,255,255,.78);font-size:15px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}
+.hero-chip{padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);font-weight:800;font-size:12px}
+.start-form{margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.field label{display:block;font-size:12px;font-weight:900;margin-bottom:7px;color:var(--navy)}
+.field input{width:100%;padding:13px 14px;border:1px solid #cdd7e5;border-radius:12px;outline:none;background:#fff;transition:.2s}
+.field input:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,111,237,.11)}
+.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:900;cursor:pointer;transition:.18s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,#2f6fed,#1d55c7);color:#fff;box-shadow:0 10px 24px rgba(47,111,237,.24)}
+.btn-secondary{background:#fff;border:1px solid #cdd7e5;color:var(--ink)}
+.btn-danger{background:linear-gradient(135deg,#d73737,#a91f1f);color:#fff;box-shadow:0 9px 22px rgba(198,40,40,.18)}
+.start-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.exam-info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.info-card{background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:15px}
+.info-card b{display:block;color:var(--navy);font-size:14px}.info-card span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.nav{display:flex;gap:9px;overflow:auto;padding:5px 0 14px;position:sticky;top:67px;z-index:30;background:rgba(244,247,251,.94);backdrop-filter:blur(12px)}
+.nav button{white-space:nowrap;border:1px solid #cdd7e5;background:#fff;color:var(--navy);border-radius:13px;padding:11px 15px;font-weight:900;cursor:pointer;box-shadow:0 4px 12px rgba(16,35,63,.04)}
+.nav button.active{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 9px 20px rgba(16,35,63,.16)}
+.nav button.locked{opacity:.55}
+.section-note{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.section-kicker{font-size:11px;color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.progress{height:8px;background:#eaf0f7;border-radius:999px;overflow:hidden;margin:10px 0 18px}.progress>div{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}
+.question-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;margin:14px 0;box-shadow:0 7px 24px rgba(16,35,63,.045)}
+.q-head{display:flex;gap:12px;font-weight:850;font-size:16px;line-height:1.5;align-items:flex-start}
+.q-number{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;flex:none;box-shadow:0 5px 13px rgba(47,111,237,.2)}
+.question-visual{display:block;max-width:100%;width:auto;max-height:390px;margin:15px auto 8px;border:1px solid #e5eaf1;border-radius:12px}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:13px}
+.option{display:flex;gap:10px;align-items:center;border:1px solid #d3dce8;padding:12px;border-radius:12px;cursor:pointer;transition:.15s;background:#fff}
+.option:hover{border-color:#aebdd1;background:#f9fbff}
+.option:has(input:checked){border-color:var(--blue);background:#eef5ff;box-shadow:0 0 0 2px rgba(47,111,237,.07)}
+.option input{accent-color:var(--blue)}.box{font-weight:950;min-width:22px;color:var(--navy)}
+.stimulus{border:1px solid #d7e2ef;background:linear-gradient(180deg,#fbfdff,#f5f9fd);padding:15px 17px;border-radius:14px;margin:10px 0 16px;line-height:1.6}
+.stimulus .site{font-weight:900;color:var(--blue);margin-bottom:3px}.stimulus .notice-title{font-weight:950;color:var(--navy);font-size:15px}.stimulus p{margin:6px 0}
+.audio-box{padding:16px;border:1px solid #cfe1ed;border-radius:16px;background:linear-gradient(135deg,#f5fcfd,#f5f9ff);margin-bottom:18px}
+audio{width:100%;margin:8px 0}
+.writing-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}
+.writing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+textarea{width:100%;min-height:240px;resize:vertical;padding:14px;border:1px solid #cdd7e5;border-radius:12px;line-height:1.6}
+.umlauts{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0}.umlauts button{padding:8px 12px;border:1px solid #cdd7e5;background:#fff;border-radius:9px;cursor:pointer;font-weight:900;color:var(--navy)}.umlauts button:hover{background:#eef5ff;border-color:var(--blue)}
+.bottom-bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);border-top:1px solid var(--line);padding:10px 20px;z-index:50;backdrop-filter:blur(16px)}
+.bottom-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lock-screen{text-align:center;padding:50px 20px}.lock-icon{width:70px;height:70px;margin:0 auto 18px;border-radius:22px;display:grid;place-items:center;background:#eef5ff;color:var(--blue);font-size:30px}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.score-box{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}.score-box b{display:block;font-size:24px;margin-top:5px;color:var(--navy)}.blank{color:#98a2b3}
+footer{color:#8a98ab;text-align:center;padding:30px 0;font-size:12px}
+@media(max-width:800px){.grid,.writing-grid,.score-grid,.exam-info{grid-template-columns:1fr}.header-inner{padding:11px 14px}main{padding:20px 12px 100px}.panel{padding:18px;border-radius:19px}.nav{top:59px}.bottom-inner{align-items:stretch}.bottom-inner .btn{flex:1}.bottom-inner #candidate-label{display:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="brand">Golden Times Educational Services<small>A1 Final Test</small></div>
+  <div id="timer" class="timer">—</div>
+ </div>
+</header>
+
+<main id="app">
+<section id="start-screen" class="panel start-hero">
+ <div class="hero-content">
+  <div class="eyebrow"><i></i> Golden Times Assessment Portal</div>
+  <h1>A1 Final Test</h1>
+  <p class="sub">Listening · Reading · Schreiben. A focused digital assessment for Golden Times Educational Services students.</p>
+  <div class="hero-meta">
+   <span class="hero-chip">Listening · 20 min</span><span class="hero-chip">Reading · 25 min</span><span class="hero-chip">Schreiben · 20 min</span>
+  </div>
+  <div class="start-form">
+   <div class="grid">
+    <div class="field"><label style="color:#fff">Student Name *</label><input id="studentName" autocomplete="name" placeholder="Enter full name"></div>
+    <div class="field"><label style="color:#fff">Student Phone Number *</label><input id="studentNumber" type="tel" inputmode="tel" autocomplete="tel" placeholder="Enter phone number"></div>
+    <div class="field"><label style="color:#fff">Mother / Father Name *</label><input id="parentName" autocomplete="name" placeholder="Enter parent name"></div>
+   </div>
+   <div class="start-actions"><button class="btn btn-primary" id="startBtn">Start Final Test →</button></div>
+   <p id="start-error" class="sub" style="color:#ffd6d6;margin-top:10px"></p>
+  </div>
+ </div>
+</section>
+
+<section id="locked-screen" class="panel hidden lock-screen">
+ <h2>Test already submitted</h2>
+ <p class="sub">This candidate phone number has already submitted this test on this browser. The test cannot be reopened.</p>
+</section>
+
+<section id="exam-screen" class="hidden">
+ <div class="nav" id="nav">
+  <button data-section="listening">Listening <span id="ls-status"></span></button>
+  <button data-section="reading">Reading <span id="rd-status"></span></button>
+  <button data-section="writing">Writing <span id="wr-status"></span></button>
+ </div>
+
+ <div id="listening" class="section panel hidden">
+  <div class="section-note"><div><h2>Listening</h2><div class="sub">Approx. 20 minutes · 15 questions</div></div><div id="listening-timer" class="timer">20:00</div></div>
+  <div class="audio-box">
+   <b>Listening audio</b>
+   <p class="sub">The uploaded PDF contains the question sheets but does not contain the audio tracks. Put the three supplied/authorized audio files in the <code>audio/</code> folder as <code>part1.mp3</code>, <code>part2.mp3</code> and <code>part3.mp3</code>. The player will appear automatically when those files are present.</p>
+   <div id="audioPlayers"></div>
+  </div>
+  <div id="listening-questions">
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">1</span><div>Wo wollen die Freundinnen die Party machen?</div></div>
+          <img class="question-visual" src="assets/h1.jpg" alt="Question listening 1 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-1" value="Im Garten." data-letter="a">
+              <span class="box">a</span>
+              <span>Im Garten.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-1" value="Im Haus." data-letter="b">
+              <span class="box">b</span>
+              <span>Im Haus.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-1" value="Am See." data-letter="c">
+              <span class="box">c</span>
+              <span>Am See.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">2</span><div>Wann wollen sie sich treffen?</div></div>
+          <img class="question-visual" src="assets/h2.jpg" alt="Question listening 2 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-2" value="Um 19.30 Uhr." data-letter="a">
+              <span class="box">a</span>
+              <span>Um 19.30 Uhr.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-2" value="Um 20.30 Uhr." data-letter="b">
+              <span class="box">b</span>
+              <span>Um 20.30 Uhr.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-2" value="Um 21.00 Uhr." data-letter="c">
+              <span class="box">c</span>
+              <span>Um 21.00 Uhr.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">3</span><div>Wo stehen Taxis?</div></div>
+          <img class="question-visual" src="assets/h3.jpg" alt="Question listening 3 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-3" value="An der Ecke rechts." data-letter="a">
+              <span class="box">a</span>
+              <span>An der Ecke rechts.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-3" value="Die Straße geradeaus." data-letter="b">
+              <span class="box">b</span>
+              <span>Die Straße geradeaus.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-3" value="Geradeaus und links." data-letter="c">
+              <span class="box">c</span>
+              <span>Geradeaus und links.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">4</span><div>Wie lange dauern die Sommerkurse?</div></div>
+          <img class="question-visual" src="assets/h4.jpg" alt="Question listening 4 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-4" value="Zwei Wochen." data-letter="a">
+              <span class="box">a</span>
+              <span>Zwei Wochen.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-4" value="Drei Wochen." data-letter="b">
+              <span class="box">b</span>
+              <span>Drei Wochen.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-4" value="Vier Wochen." data-letter="c">
+              <span class="box">c</span>
+              <span>Vier Wochen.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">5</span><div>Was soll Johanna mitbringen?</div></div>
+          <img class="question-visual" src="assets/h5.jpg" alt="Question listening 5 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-5" value="Salat." data-letter="a">
+              <span class="box">a</span>
+              <span>Salat.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-5" value="Saft." data-letter="b">
+              <span class="box">b</span>
+              <span>Saft.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-5" value="Karten." data-letter="c">
+              <span class="box">c</span>
+              <span>Karten.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">6</span><div>Wann ist Frau Horn aus dem Urlaub zurück?</div></div>
+          <img class="question-visual" src="assets/h6.jpg" alt="Question listening 6 visual">
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-6" value="Am Mittwoch." data-letter="a">
+              <span class="box">a</span>
+              <span>Am Mittwoch.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-6" value="Am Freitag." data-letter="b">
+              <span class="box">b</span>
+              <span>Am Freitag.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-6" value="Am Montag." data-letter="c">
+              <span class="box">c</span>
+              <span>Am Montag.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">7</span><div>Die Fahrgäste sollen den Bus nehmen.</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-7" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-7" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">8</span><div>Die Kunden sollen in den zweiten Stock kommen.</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-8" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-8" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">9</span><div>Die Leute sollen zu Hause bleiben.</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-9" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-9" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">10</span><div>Fahrgäste nach Innsbruck sollen mit dem ICE 346 fahren.</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-10" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-10" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">11</span><div>Wann will Greta das Formular holen?</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-11" value="Heute Abend." data-letter="a">
+              <span class="box">a</span>
+              <span>Heute Abend.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-11" value="Morgen." data-letter="b">
+              <span class="box">b</span>
+              <span>Morgen.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-11" value="Montagmorgen." data-letter="c">
+              <span class="box">c</span>
+              <span>Montagmorgen.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">12</span><div>Wo möchte Heinz Siggi treffen?</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-12" value="Am Bahnhof." data-letter="a">
+              <span class="box">a</span>
+              <span>Am Bahnhof.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-12" value="Im italienischen Restaurant." data-letter="b">
+              <span class="box">b</span>
+              <span>Im italienischen Restaurant.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-12" value="Im Restaurant „Zwiebel“." data-letter="c">
+              <span class="box">c</span>
+              <span>Im Restaurant „Zwiebel“.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">13</span><div>Wann möchte Eva Schmitz am Mittwoch kommen?</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-13" value="Um 10.00 Uhr." data-letter="a">
+              <span class="box">a</span>
+              <span>Um 10.00 Uhr.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-13" value="Um 11.00 Uhr." data-letter="b">
+              <span class="box">b</span>
+              <span>Um 11.00 Uhr.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-13" value="Um 12.00 Uhr." data-letter="c">
+              <span class="box">c</span>
+              <span>Um 12.00 Uhr.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">14</span><div>Was soll man sagen?</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-14" value="Die Adresse." data-letter="a">
+              <span class="box">a</span>
+              <span>Die Adresse.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-14" value="Die E-Mail-Adresse." data-letter="b">
+              <span class="box">b</span>
+              <span>Die E-Mail-Adresse.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-14" value="Die Telefonnummer." data-letter="c">
+              <span class="box">c</span>
+              <span>Die Telefonnummer.</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">15</span><div>Wie kommt Herr Müller ins Büro?</div></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="listening-15" value="Mit dem Fahrrad." data-letter="a">
+              <span class="box">a</span>
+              <span>Mit dem Fahrrad.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-15" value="Mit der Straßenbahn." data-letter="b">
+              <span class="box">b</span>
+              <span>Mit der Straßenbahn.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="listening-15" value="Mit dem Auto." data-letter="c">
+              <span class="box">c</span>
+              <span>Mit dem Auto.</span>
+            </label></div>
+        </article></div>
+ </div>
+
+ <div id="reading" class="section panel hidden">
+  <div class="section-note"><div><h2>Reading</h2><div class="sub">Approx. 25 minutes · 15 questions</div></div><div id="reading-timer" class="timer">25:00</div></div>
+  <div class="sub">The visual stimuli are cropped from the supplied candidate sheets and shown with the individual questions rather than pasting whole pages.</div>
+  <div id="reading-questions">
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">1</span><div>Herr Beck übernachtet im Hotel.</div></div><div class="stimulus"><b>Liebe Frau Dehner,</b><p>vielen Dank für die Einladung zu Ihrem Jazz-Konzert. Ich komme gern und ich freue mich sehr auf das Konzert. Ich danke Ihnen auch, dass ich in Ihrem Gästezimmer schlafen kann und kein Hotel suchen muss. Mein Zug kommt schon um circa 16 Uhr an. Kann ich Ihnen am Nachmittag dann vor dem Konzert etwas helfen?</p><p>Bis bald und herzliche Grüße<br>Winfried Beck</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-1" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-1" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">2</span><div>Herr Beck bietet Frau Dehner seine Hilfe an.</div></div><div class="stimulus"><b>Liebe Frau Dehner,</b><p>vielen Dank für die Einladung zu Ihrem Jazz-Konzert. Ich komme gern und ich freue mich sehr auf das Konzert. Ich danke Ihnen auch, dass ich in Ihrem Gästezimmer schlafen kann und kein Hotel suchen muss. Mein Zug kommt schon um circa 16 Uhr an. Kann ich Ihnen am Nachmittag dann vor dem Konzert etwas helfen?</p><p>Bis bald und herzliche Grüße<br>Winfried Beck</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-2" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-2" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">3</span><div>Frau Stein ist in Berlin.</div></div><div class="stimulus"><b>Betreff: Neuer Arbeitsplatz</b><p>Liebe Frau Jakobs,<br>ich komme heute, Dienstag, noch nicht aus Berlin zurück. Ich habe morgen ein Gespräch mit dem Kunden Maybach. Der ist ganz wichtig für uns. Und am Donnerstag habe ich zwei weitere neue Termine. Aber am Freitag bin ich ab 8 Uhr wieder im Büro. Bitte machen Sie mir für 11 Uhr einen Termin mit Dr. Falk.</p><p>Vielen Dank und herzliche Grüße<br>Helga Stein</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-3" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-3" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">4</span><div>Am Mittwoch hat Frau Stein frei.</div></div><div class="stimulus"><b>Betreff: Neuer Arbeitsplatz</b><p>Liebe Frau Jakobs,<br>ich komme heute, Dienstag, noch nicht aus Berlin zurück. Ich habe morgen ein Gespräch mit dem Kunden Maybach. Der ist ganz wichtig für uns. Und am Donnerstag habe ich zwei weitere neue Termine. Aber am Freitag bin ich ab 8 Uhr wieder im Büro. Bitte machen Sie mir für 11 Uhr einen Termin mit Dr. Falk.</p><p>Vielen Dank und herzliche Grüße<br>Helga Stein</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-4" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-4" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">5</span><div>Frau Stein will am Freitag Dr. Falk treffen.</div></div><div class="stimulus"><b>Betreff: Neuer Arbeitsplatz</b><p>Liebe Frau Jakobs,<br>ich komme heute, Dienstag, noch nicht aus Berlin zurück. Ich habe morgen ein Gespräch mit dem Kunden Maybach. Der ist ganz wichtig für uns. Und am Donnerstag habe ich zwei weitere neue Termine. Aber am Freitag bin ich ab 8 Uhr wieder im Büro. Bitte machen Sie mir für 11 Uhr einen Termin mit Dr. Falk.</p><p>Vielen Dank und herzliche Grüße<br>Helga Stein</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-5" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-5" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">6</span><div>Sie wollen viele Freunde zu Ihrem Geburtstag einladen. Sie suchen einen Ort.</div></div><div class="stimulus"><div class="site">www.raum-in-koeln.de</div><p>Raum für Tanz, Sport, Hochzeiten und andere private Feiern zu vermieten. Auch abends Termine frei, günstige Preise.</p><div class="site">www.wohnen-in-koeln.de</div><p>Schöne Zimmer und Apartments für 2–12 Wochen im Großraum Köln zu interessanten Preisen.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-6" value="www.raum-in-koeln.de" data-letter="0">
+              <span class="box">F</span>
+              <span>www.raum-in-koeln.de</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-6" value="www.wohnen-in-koeln.de" data-letter="1">
+              <span class="box">F</span>
+              <span>www.wohnen-in-koeln.de</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">7</span><div>Der Computer ist kaputt. Sie können ihn nicht allein reparieren.</div></div><div class="stimulus"><div class="site">www.technohaus.de</div><p>Gebrauchte Kühlschränke, Herde, Waschmaschinen, Computer, Drucker, Fernseher, Radios, Handys usw. zu supergünstigen Preisen!</p><div class="site">www.computer-loesungen.de</div><p>Für alles, was mit Computern, Druckern, Scannern, Internet usw. zu tun hat. Auch Reparaturen.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-7" value="www.computer-loesungen.de" data-letter="0">
+              <span class="box">F</span>
+              <span>www.computer-loesungen.de</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-7" value="www.technohaus.de" data-letter="1">
+              <span class="box">F</span>
+              <span>www.technohaus.de</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">8</span><div>Sie möchten am Samstagabend mit Freunden tanzen gehen.</div></div><div class="stimulus"><div class="site">www.tanzen-macht-spass.de</div><p>Tanzschule Renz. Informieren Sie sich jetzt über die neuen Tanzkurse für Jugendliche und Erwachsene. Bitte bestellen Sie unseren Tanzplan.</p><div class="site">www.wohin-am-wochenende.de</div><p>Ins Aladin! Das neue Tanz-Restaurant. Erst gut essen, dann tanzen – die ganze Nacht! Freitag + Samstag haben wir bis 4 Uhr geöffnet.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-8" value="www.tanzen-macht-spass.de" data-letter="0">
+              <span class="box">F</span>
+              <span>www.tanzen-macht-spass.de</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-8" value="www.wohin-am-wochenende.de" data-letter="1">
+              <span class="box">F</span>
+              <span>www.wohin-am-wochenende.de</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">9</span><div>Sie möchten am Wochenende Fußball spielen.</div></div><div class="stimulus"><div class="site">www.freizeitsport-freiburg.de</div><p>Basketball, Fitness, Fußball und mehr. Montags bis donnerstags 18.30 bis 21.00 Uhr im Südpark am See. Sonntags 10–12 Uhr. Keine Anmeldung.</p><div class="site">www.fc-1897.de/training</div><p>Der Fußballklub FC 1897 sucht Spieler und Spielerinnen. Treffpunkt: Sportanlage Ulrichsplatz.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-9" value="www.freizeitsport-freiburg.de" data-letter="0">
+              <span class="box">F</span>
+              <span>www.freizeitsport-freiburg.de</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-9" value="www.fc-1897.de/training" data-letter="1">
+              <span class="box">F</span>
+              <span>www.fc-1897.de/training</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">10</span><div>Sie studieren und möchten ein bisschen arbeiten.</div></div><div class="stimulus"><b>Unsere Bäckerei braucht Hilfe.</b><p>Junge Verkäuferin/Junger Verkäufer gesucht für Zeitungskiosk. 42-Stunden-Woche bei guter Bezahlung.</p><p>Wir suchen eine junge Frau/einen jungen Mann im Verkauf am Samstag von 7 bis 11 Uhr.</p><p>0176 - 55 44 321</p><hr><p>Junge Verkäuferin/Verkäufer gesucht für Zeitungskiosk bei guter Bezahlung.</p><p>0160 - 683 456 20</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-10" value="0176 – 55 44 321" data-letter="0">
+              <span class="box">F</span>
+              <span>0176 – 55 44 321</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-10" value="0160 – 683 456 20" data-letter="1">
+              <span class="box">F</span>
+              <span>0160 – 683 456 20</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">11</span><div>Am Sonntagvormittag bekommen Sie hier Blumen.</div></div><div class="stimulus"><div class="notice-title">Blumenladen — Neu! Neu! Neu! Neu!</div><p>Liebe Kunden! Ab sofort haben wir auch sonntags von 9–12 Uhr für Sie geöffnet!</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-11" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-11" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">12</span><div>Jeden Montag bietet das Restaurant indisches Essen an.</div></div><div class="stimulus"><div class="notice-title">Restaurant</div><p>Liebe Gäste, im nächsten Monat kocht bei uns ein Koch aus Kalkutta indische Spezialitäten. Wir freuen uns auf Ihren Besuch.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-12" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-12" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">13</span><div>Es ist der 2. Mai, 21 Uhr. Sie können jetzt nicht zum Hauptbahnhof fahren.</div></div><div class="stimulus"><div class="notice-title">Linie 8</div><p>Ab 1.5. nur bis Hauptbahnhof. Zur Weiterfahrt nach Huchting: Linie 1 oder Bus Nr. 53.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-13" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-13" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">14</span><div>Sie können die Wohnung nicht besichtigen.</div></div><div class="stimulus"><div class="notice-title">An einer Haustür</div><p>Sehr geehrte Interessenten, es gibt leider keine Besichtigungen mehr. Die 3-Zimmer-Wohnung im 3. Stock ist schon vermietet.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-14" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-14" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article>
+
+        <article class="question-card">
+          <div class="q-head"><span class="q-number">15</span><div>Ab 22 Uhr können Sie keine Fahrkarten mehr kaufen.</div></div><div class="stimulus"><div class="notice-title">Im Bahnhof</div><p>Sehr geehrte Fahrgäste! Ab 22 Uhr sind unsere Schalter geschlossen. Fahrkarten bekommen Sie dann an unseren Automaten.</p></div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="reading-15" value="Richtig" data-letter="0">
+              <span class="box">R</span>
+              <span>Richtig</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="reading-15" value="Falsch" data-letter="1">
+              <span class="box">F</span>
+              <span>Falsch</span>
+            </label></div>
+        </article></div>
+ </div>
+
+ <div id="writing" class="section panel hidden">
+  <div class="section-note"><div><h2>Writing (Schreiben)</h2><div class="sub">Approx. 20 minutes · manual marking · maximum 15 points</div></div><div id="writing-timer" class="timer">20:00</div></div>
+  <div class="writing-card">
+   <h3>Teil 1</h3>
+   <p>Ihr Freund, Vladimir Serjakov, 30 Jahre alt, kommt aus Sankt Petersburg in Russland und lebt seit einem Monat in Hamburg. Er hat eine neue Stelle bei TUI als Reiseleiter. Seit gestern hat er 39 Grad Fieber. Heute geht er zum Arzt.</p>
+   <p>Helfen Sie Ihrem Freund und schreiben Sie die fünf fehlenden Informationen in das Formular.</p>
+   <img class="question-visual" src="assets/writing_form.png" alt="Writing Part 1 source form">
+   <div class="writing-grid">
+    <div class="field"><label>1 · Postleitzahl, Wohnort</label><input id="w1"></div>
+    <div class="field"><label>2 · Alter</label><input id="w2"></div>
+    <div class="field"><label>3 · Beruf</label><input id="w3"></div>
+    <div class="field"><label>4 · Seit wann sind Sie krank?</label><input id="w4"></div>
+    <div class="field" style="grid-column:1/-1"><label>5 · Was fehlt Ihnen?</label><input id="w5"></div>
+   </div>
+  </div>
+
+  <div class="writing-card">
+   <h3>Teil 2</h3>
+   <p>Ihr neuer Kollege, Herr Jensch, lädt Sie am Dienstag um 15 Uhr zu seiner Geburtstagsfeier im Büro ein. Schreiben Sie Herrn Jensch eine E-Mail:</p>
+   <ul><li>Warum schreiben Sie?</li><li>Sagen Sie: später kommen.</li><li>Fragen Sie: helfen?</li></ul>
+   <label style="font-weight:800">Ihre E-Mail</label>
+   <div class="umlauts" id="umlauts"></div>
+   <textarea id="wEmail" placeholder="Schreiben Sie hier Ihre E-Mail …"></textarea>
+  </div>
+ </div>
+</section>
+</main>
+
+<div id="bottom-bar" class="bottom-bar hidden"><div class="bottom-inner"><span id="candidate-label" class="sub"></span><button id="submitBtn" class="btn btn-danger">Submit Final Test & Download Result PDF</button></div></div>
+<footer>Golden Times Educational Services</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const KEY='goldenTimesA1Submitted_v2';
+const answers={
+ "listening":{
+  "1":"Im Garten.","2":"Um 20.30 Uhr.","3":"Geradeaus und links.","4":"Zwei Wochen.","5":"Karten.","6":"Am Montag.",
+  "7":"Richtig","8":"Falsch","9":"Richtig","10":"Richtig",
+  "11":"Montagmorgen.","12":"Am Bahnhof.","13":"Um 10.00 Uhr.","14":"Die Telefonnummer.","15":"Mit dem Fahrrad."
+ },
+ "reading":{
+  "1":"Falsch","2":"Richtig","3":"Richtig","4":"Falsch","5":"Richtig",
+  "6":"www.raum-in-koeln.de","7":"www.computer-loesungen.de","8":"www.wohin-am-wochenende.de",
+  "9":"www.fc-1897.de/training","10":"0176 – 55 44 321",
+  "11":"Richtig","12":"Falsch","13":"Falsch","14":"Richtig","15":"Falsch"
+ }
+};
+const durations={listening:20*60,reading:25*60,writing:20*60};
+const state={started:false,submitted:false,current:null,timers:{},deadlines:{},answers:{},candidate:{},writing:{}};
+let tickHandle=null;
+
+function $(id){return document.getElementById(id)}
+function formatTime(sec){sec=Math.max(0,Math.ceil(sec)); const m=String(Math.floor(sec/60)).padStart(2,'0'),s=String(sec%60).padStart(2,'0'); return m+':'+s}
+function storageKey(){return KEY+'_'+state.candidate.studentNumber.trim().toLowerCase()}
+function save(){try{localStorage.setItem('goldenTimesDraft_'+state.candidate.studentNumber,JSON.stringify(state))}catch(e){}}
+function hasSubmitted(number){return !!localStorage.getItem(KEY+'_'+number.trim().toLowerCase())}
+function markSubmitted(){localStorage.setItem(storageKey(),JSON.stringify({submittedAt:new Date().toISOString(),candidate:state.candidate}))}
+function show(id){$('start-screen').classList.toggle('hidden',id!=='start');$('locked-screen').classList.toggle('hidden',id!=='locked');$('exam-screen').classList.toggle('hidden',id!=='exam');$('bottom-bar').classList.toggle('hidden',id!=='exam')}
+function sectionButton(name){return [...document.querySelectorAll('#nav button')].find(b=>b.dataset.section===name)}
+function startSection(name){
+ if(!state.started||state.submitted) return;
+ state.current=name;
+ for(const s of ['listening','reading','writing']) $(''+s).classList.toggle('hidden',s!==name);
+ document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.section===name));
+ if(!state.timers[name]){state.timers[name]=true;state.deadlines[name]=Date.now()+durations[name]*1000;save()}
+ updateSectionStatus();
+ updateTimers();
+}
+function updateSectionStatus(){
+ for(const name of ['listening','reading','writing']) {
+  const btn=sectionButton(name); const el=$(name+'-timer');
+  let label='';
+  if(state.deadlines[name]) label=Date.now()>=state.deadlines[name]?' · done':' · started';
+  btn.querySelector('span').textContent=label;
+  el.textContent=formatTime((state.deadlines[name]?state.deadlines[name]-Date.now():durations[name]*1000)/1000);
+ }
+}
+function updateTimers(){
+ const now=Date.now();
+ for(const name of ['listening','reading','writing']) {
+  const el=$(name+'-timer'); const remain=state.deadlines[name]?Math.max(0,state.deadlines[name]-now):durations[name]*1000;
+  el.textContent=formatTime(remain/1000);
+  el.classList.toggle('danger',remain<120000 && remain>0);
+  if(state.deadlines[name] && remain<=0 && !el.dataset.expired){
+    el.dataset.expired='1'; lockSection(name);
+  }
+ }
+ if(state.current && state.deadlines[state.current]) $('timer').textContent=$(state.current+'-timer').textContent;
+ if(state.current) $('timer').className='timer '+($(''+state.current+'-timer').classList.contains('danger')?'danger':'');
+}
+function lockSection(name){
+ state.timers[name]='finished'; 
+ document.querySelectorAll('#'+name+' input,#'+name+' textarea,#'+name+' button').forEach(x=>{if(!x.closest('.nav'))x.disabled=true});
+ sectionButton(name).classList.add('locked');
+ alert(name.charAt(0).toUpperCase()+name.slice(1)+' time is over. This section is locked.');
+ save();
+}
+function collect(){
+ for(const name of ['listening','reading']) {
+  state.answers[name]={};
+  document.querySelectorAll('#'+name+' input[type=radio]:checked').forEach(i=>state.answers[name][i.name.split('-')[1]]=i.value);
+ }
+ state.writing={w1:$('w1').value,w2:$('w2').value,w3:$('w3').value,w4:$('w4').value,w5:$('w5').value,email:$('wEmail').value};
+}
+function autoScore(name){
+ let score=0; const a=answers[name];
+ for(let i=1;i<=15;i++) if(state.answers[name] && state.answers[name][String(i)]===a[String(i)]) score++;
+ return score;
+}
+function buildPDF(){
+ const {jsPDF}=window.jspdf;
+ const doc=new jsPDF({unit:'mm',format:'a4'});
+ const c=state.candidate;
+ const ls=autoScore('listening'), rd=autoScore('reading');
+ const navy=[16,35,63], blue=[47,111,237], gold=[232,184,74], light=[245,248,252];
+ // First page — manual-friendly result card. No "automatic score" is shown.
+ doc.setFillColor(...navy);doc.rect(0,0,210,36,'F');
+ doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(18);
+ doc.text('Golden Times Educational Services',18,16);
+ doc.setFontSize(10);doc.setFont('helvetica','normal');doc.text('A1 FINAL TEST · RESULT CARD',18,25);
+ doc.setFillColor(...gold);doc.rect(174,0,36,36,'F');
+ doc.setTextColor(...navy);doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('A1',185,20);
+ doc.setTextColor(23,32,51);
+ doc.setFontSize(15);doc.text('Candidate Details',18,49);
+ let y=59;
+ const rows=[
+  ['Student Name',c.name],['Student Phone Number',c.studentNumber],['Mother / Father Name',c.parentName],
+  ['Test','A1 Final Test']
+ ];
+ rows.forEach(r=>{
+   doc.setFillColor(...light);doc.roundedRect(18,y-6,174,10,2,2,'F');
+   doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...navy);doc.text(r[0],23,y);
+   doc.setFont('helvetica','normal');doc.setTextColor(55,65,81);doc.text(String(r[1]||''),75,y);y+=13;
+ });
+ y+=6;doc.setFont('helvetica','bold');doc.setFontSize(15);doc.setTextColor(...navy);doc.text('Score Card',18,y);y+=10;
+ const scoreRows=[
+   ['Listening',ls+' / 15'],['Reading',rd+' / 15'],['Schreiben (Writing)','____ / 15'],['Sprechen (Speaking)','____ / 15']
+ ];
+ scoreRows.forEach((r,i)=>{
+   doc.setFillColor(i%2?250:245,248,252);doc.roundedRect(18,y-6,174,11,2,2,'F');
+   doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...navy);doc.text(r[0],23,y);
+   doc.setFont('helvetica','bold');doc.text(r[1],150,y);y+=13;
+ });
+ y+=4;doc.setFillColor(238,245,255);doc.roundedRect(18,y-7,174,17,3,3,'F');
+ doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...blue);doc.text('TOTAL SCORE',23,y+1);
+ doc.setFontSize(14);doc.text('____ / 60',150,y+1);
+ y+=24;doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(100,116,139);
+ doc.text('Listening and Reading are checked automatically. Schreiben and Sprechen are',18,y);
+ doc.text('left blank for manual marking. Enter the final total after manual marking.',18,y+5);
+ doc.setFont('helvetica','italic');doc.text('Golden Times Educational Services · A1 Final Assessment',18,285);
+
+ // Second page — exact candidate writing response.
+ doc.addPage();
+ doc.setFillColor(...navy);doc.rect(0,0,210,28,'F');
+ doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('Schreiben — Candidate Response',18,17);
+ doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text(c.name+' · '+c.studentNumber,18,23);
+ doc.setTextColor(...navy);let wy=40;
+ doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('Teil 1',18,wy);wy+=9;
+ const labels=[['Postleitzahl, Wohnort',state.writing.w1],['Alter',state.writing.w2],['Beruf',state.writing.w3],['Seit wann sind Sie krank?',state.writing.w4],['Was fehlt Ihnen?',state.writing.w5]];
+ labels.forEach(r=>{
+   doc.setFillColor(248,250,252);doc.roundedRect(18,wy-6,174,11,2,2,'F');
+   doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(r[0],23,wy);
+   doc.setFont('helvetica','normal');doc.text(String(r[1]||''),90,wy);wy+=13;
+ });
+ wy+=8;doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('Teil 2 — E-Mail',18,wy);wy+=9;
+ doc.setFont('helvetica','normal');doc.setFontSize(10);
+ const lines=doc.splitTextToSize(state.writing.email||'',174);
+ doc.text(lines,18,wy);
+ doc.setFont('helvetica','italic');doc.setFontSize(8);doc.setTextColor(100,116,139);
+ doc.text('Candidate response reproduced from the website input exactly.',18,285);
+ doc.save('Golden_Times_A1_'+(c.studentNumber||'candidate')+'_Result.pdf');
+}
+function submit(){
+ collect();
+ const unanswered=[...Array(15)].map((_,i)=>String(i+1)).filter(n=>!state.answers.listening[n]||!state.answers.reading[n]);
+ if(unanswered.length && !confirm('Some Listening/Reading answers are blank. Submit anyway?')) return;
+ if(!confirm('Submit permanently? The test will not reopen for this candidate number.')) return;
+ state.submitted=true; markSubmitted(); save(); buildPDF();
+ document.body.innerHTML='<div class="lock-screen" style="max-width:760px;margin:60px auto"><div class="lock-icon">✓</div><h1 style="color:#10233f">Test Submitted</h1><p class="sub">Your result PDF has been downloaded. The candidate phone number is now locked on this browser and this test cannot be reopened.</p><p class="sub"><b>Please enter the final Total Score / 60 manually on the result card after checking Schreiben and Sprechen.</b></p></div>';
+}
+function addUmlauts(){
+ const chars=['ä','ö','ü','Ä','Ö','Ü','ß'];
+ chars.forEach(ch=>{const b=document.createElement('button');b.type='button';b.textContent=ch;b.onclick=()=>insertChar(ch);$('umlauts').appendChild(b)})
+}
+function insertChar(ch){
+ const t=$('wEmail'),start=t.selectionStart,end=t.selectionEnd;t.setRangeText(ch,start,end,'end');t.focus();state.writing.email=t.value;save();
+}
+function init(){
+ addUmlauts();
+ ['listening','reading','writing'].forEach(name=>sectionButton(name).addEventListener('click',()=>startSection(name)));
+ $('startBtn').onclick=()=>{
+  const c={name:$('studentName').value.trim(),studentNumber:$('studentNumber').value.trim(),parentName:$('parentName').value.trim()};
+  if(!c.name||!c.studentNumber||!c.parentName){$('start-error').textContent='Please fill all three required fields.';return}
+  if(hasSubmitted(c.studentNumber)){show('locked');return}
+  const draftRaw=localStorage.getItem('goldenTimesDraft_'+c.studentNumber);
+  if(draftRaw){
+    try{
+      const d=JSON.parse(draftRaw);
+      if(d && d.candidate && d.started && !d.submitted){
+        Object.assign(state,d);
+        $('candidate-label').textContent=c.name+' · '+c.studentNumber;
+        show('exam');
+        for(const name of ['listening','reading']){
+          for(const [qn,val] of Object.entries(state.answers[name]||{})){
+            const el=document.querySelector('#'+name+' input[name="'+name+'-'+qn+'"][value="'+CSS.escape(val)+'"]');
+            if(el) el.checked=true;
+          }
+        }
+        $('w1').value=state.writing?.w1||'';$('w2').value=state.writing?.w2||'';$('w3').value=state.writing?.w3||'';$('w4').value=state.writing?.w4||'';$('w5').value=state.writing?.w5||'';$('wEmail').value=state.writing?.email||'';
+        startSection(state.current||'listening'); updateTimers(); return;
+      }
+    }catch(e){}
+  }
+  state.candidate=c;state.started=true;state.current='listening';show('exam');$('candidate-label').textContent=c.name+' · '+c.studentNumber;startSection('listening');save();
+ };
+ $('submitBtn').onclick=submit;
+ document.addEventListener('input',()=>{collect();save()});
+ tickHandle=setInterval(updateTimers,250);
+ // dynamic audio players: no source files are invented; players appear only if the authorized files are present.
+ const ap=$('audioPlayers');
+ ['part1.mp3','part2.mp3','part3.mp3'].forEach((file,i)=>{const a=document.createElement('audio');a.controls=true;a.preload='none';a.src='audio/'+file;a.style.display='block';a.style.margin='8px 0';a.addEventListener('error',()=>a.style.display='none');ap.appendChild(a)})
+}
+init();
+</script>
+</body>
+</html>
